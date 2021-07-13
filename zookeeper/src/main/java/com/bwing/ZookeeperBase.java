@@ -40,6 +40,21 @@ public class ZookeeperBase {
             }
         });
     }
+    public ZookeeperBase() throws IOException {
+        zooKeeper = new ZooKeeper("175.27.230.96:2181,175.27.230.96:2182,175.27.230.96:2183", 5000, new Watcher() {
+            @Override
+            public void process(WatchedEvent watchedEvent) {
+                Event.KeeperState state = watchedEvent.getState();
+                String path = watchedEvent.getPath();
+                Event.EventType type = watchedEvent.getType();
+                if(Event.KeeperState.SyncConnected.equals(state)){
+                    if(Event.EventType.None.equals(type)){
+                        logger.info("zk建立链接成功");
+                    }
+                }
+            }
+        });
+    }
 
     public void closeZookeeper() throws InterruptedException {
         if(zooKeeper != null){
@@ -49,10 +64,13 @@ public class ZookeeperBase {
     }
 
 
-    public String createNode(String path,String data) throws KeeperException, InterruptedException {
+    public String createPersistentNode(String path,String data) throws KeeperException, InterruptedException {
         return zooKeeper.create(path,data.getBytes(StandardCharsets.UTF_8), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
     }
 
+    public String createEphemeralSequentialNode(String path,String data) throws KeeperException, InterruptedException {
+        return zooKeeper.create(path,data.getBytes(StandardCharsets.UTF_8), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+    }
     public String getData(String path) throws KeeperException, InterruptedException {
         byte[] data = zooKeeper.getData(path, false, null);
         return new String(data);
@@ -67,13 +85,14 @@ public class ZookeeperBase {
         return exists;
     }
 
+
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-        String connect = "127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183";
+        String connect = "175.27.230.96:2181,175.27.230.96:2182,175.27.230.96:2183";
         ZookeeperBase zookeeperBase = new ZookeeperBase(connect, 5000);
         String path ="/base";
         String node ;
         if(zookeeperBase.exists(path) == null){
-            node = zookeeperBase.createNode(path, "emm");
+            node = zookeeperBase.createPersistentNode(path, "emm");
         }else {
             node = path;
         }
