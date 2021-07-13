@@ -2,15 +2,16 @@ package com.bwing;
 
 public class TestZooKeeperDistributedLock {
     public static void main(String[] args) {
-        ZooKeeperDistributedLock lock = new SimpleZooKeeperDistributedLock();
+
 
         for(int i =0;i < 10;i++){
             new Thread( new Runnable() {
                 @Override
                 public void run() {
+                    ZooKeeperDistributedLock lock = new SimpleZooKeeperDistributedLock();
                     lock.getLock();
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

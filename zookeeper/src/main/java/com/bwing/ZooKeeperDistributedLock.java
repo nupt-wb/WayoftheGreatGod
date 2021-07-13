@@ -14,7 +14,7 @@ public  abstract class ZooKeeperDistributedLock {
         if(tryLock()){
             System.out.println("线程"+name+"获取到了锁");
         }else{
-            System.out.println("线程"+name+"获取锁失败，进入等待状态");
+            System.out.println("线程"+name+"获取锁失败");
             waitLock();
             getLock();
         }

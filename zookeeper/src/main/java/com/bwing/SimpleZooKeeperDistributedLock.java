@@ -18,7 +18,7 @@ public class SimpleZooKeeperDistributedLock extends ZooKeeperDistributedLock {
             return;
         }
         zkClient.delete(SIMPLE_LOCK_PATH);
-        //zkClient.close();
+        zkClient.close();
         System.out.println(Thread.currentThread().getName()+"释放锁成功");
     }
 
