@@ -10,7 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>zookeeper</module>
-        <module>sharding-jdbc</module>
+<!--        <module>sharding-jdbc</module>-->
+        <module>dubbo</module>
+        <module>order-service-consumer</module>
+        <module>dubbo-order-service-consumer</module>
+        <module>dubbo-user-service-provider</module>
+        <module>dubbo-interface</module>
     </modules>
 
     <properties>

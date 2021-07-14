@@ -2,7 +2,7 @@ import com.bwing.HighZooKeeperDistributedLock;
 import com.bwing.SimpleZooKeeperDistributedLock;
 import com.bwing.ZooKeeperDistributedLock;
 
-public class TestZooKeeperDistributedLock {
+public class  TestZooKeeperDistributedLock {
 
     private  static int  count = 100;
     public static void main(String[] args) {
