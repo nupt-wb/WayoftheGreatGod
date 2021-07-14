@@ -19,7 +19,7 @@ public class SimpleZooKeeperDistributedLock extends ZooKeeperDistributedLock {
         }
         zkClient.delete(SIMPLE_LOCK_PATH);
         zkClient.close();
-        System.out.println(Thread.currentThread().getName()+"释放锁成功");
+ //       System.out.println(Thread.currentThread().getName()+"释放锁成功");
     }
 
     @Override
@@ -57,7 +57,7 @@ public class SimpleZooKeeperDistributedLock extends ZooKeeperDistributedLock {
             countDownLatch = new CountDownLatch(1);
             try {
                 countDownLatch.await();
-                System.out.println(Thread.currentThread().getName()+"进入等待锁状态");
+             //   System.out.println(Thread.currentThread().getName()+"进入等待锁状态");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

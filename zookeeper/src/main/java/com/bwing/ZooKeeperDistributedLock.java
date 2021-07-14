@@ -12,9 +12,9 @@ public  abstract class ZooKeeperDistributedLock {
     public  void getLock(){
         String name = Thread.currentThread().getName();
         if(tryLock()){
-            System.out.println("线程"+name+"获取到了锁");
+           // System.out.println("线程"+name+"获取到了锁");
         }else{
-            System.out.println("线程"+name+"获取锁失败");
+          //  System.out.println("线程"+name+"获取锁失败");
             waitLock();
             getLock();
         }

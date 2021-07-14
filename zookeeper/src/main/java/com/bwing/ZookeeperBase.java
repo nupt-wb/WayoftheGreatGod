@@ -109,17 +109,18 @@ public class ZookeeperBase {
         System.out.println(node);
         System.out.println(data);
 
-        List<String> childs = zookeeperBase.getChild(path);
+        List<String> childs = zookeeperBase.getChild("/test");
         System.out.println(childs);
 
         childs.forEach(child ->{
-            try {
-                System.out.println(zookeeperBase.getData(path+"/"+child));
-            } catch (KeeperException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+//            try {
+                System.out.println(child);
+              //  System.out.println(zookeeperBase.getData("/test"+"/"+child));
+//            } catch (KeeperException e) {
+//                e.printStackTrace();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         });
     }
 
