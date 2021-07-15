@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd
+         http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:component-scan base-package="com.bwing"/>
+    <dubbo:application name="order-service-consumer"/>
+    <dubbo:registry address="175.27.230.96:2181,175.27.230.96:2182.175.27.230.96:2183" protocol="zookeeper"/>
+
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:reference id="userService" interface="com.bwing.service.UserService"/>
+<!--    <bean id="orderService" class="com.bwing.OrderServiceImpl">-->
+<!--        <property name="userService" ref="userService"/>-->
+<!--    </bean>-->
+</beans>

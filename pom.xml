@@ -12,10 +12,11 @@
         <module>zookeeper</module>
 <!--        <module>sharding-jdbc</module>-->
         <module>dubbo</module>
-        <module>order-service-consumer</module>
         <module>dubbo-order-service-consumer</module>
         <module>dubbo-user-service-provider</module>
         <module>dubbo-interface</module>
+        <module>dubbo-boot-user-service-provider</module>
+        <module>dubbo-boot-order-service-consumer</module>
     </modules>
 
     <properties>
