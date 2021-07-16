@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+.*
+*/.*
+classes
+build
+*/build
+output_zip/
+*/gen
+*/out
+*.iml
+*/*.iml
+/data/elasticsearch/nodes/*
+*/target
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
